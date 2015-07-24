@@ -83,6 +83,11 @@ module Mongoid
         end
       end
 
+      def validates_presence_of_attached_file(field)
+        validates_presence_of("#{field}_file_name")
+        validates_presence_of("#{field}_content_type")
+        validates_presence_of("#{field}_file_size")
+      end
       ##
       # Adds Mongoid::Paperclip's "#has_mongoid_attached_file" class method to the model
       # which includes Paperclip and Paperclip::Glue in to the model. Additionally
